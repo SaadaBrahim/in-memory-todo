@@ -4,10 +4,11 @@ export default {
   getAll: () => {
     return todos
   },
-  create: title => {
+  create: (title, numeroRandom) => {
     const newTodo = {
       id: Date.now().toString(),
       title,
+      numeroRandom: numeroRandom !== undefined ? numeroRandom : Math.random(),
       isCompleted: false
     }
 
@@ -21,6 +22,7 @@ export default {
     const updatedTodo = {
       ...todos[targetIndex],
       title: newTodo.title ?? todos[targetIndex].title,
+      numeroRandom: newTodo.numeroRandom ?? todos[targetIndex].numeroRandom,
       isCompleted: newTodo.isCompleted ?? todos[targetIndex].isCompleted,
     }
     const newTodos = [
